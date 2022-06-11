@@ -1,0 +1,9 @@
+<h1>商品新規登録</h1>
+
+<%= form_with model: @item, url: admin_item_infomations_path, method: :post do |f| %>
+  <div class="form-group">
+       <%= f.label :商品名 %>
+       <%= f.text_field :name %>
+       <%= f.submit '新規登録' %>
+  </div>
+<% end %>

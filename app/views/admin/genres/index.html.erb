@@ -1,0 +1,17 @@
+<%= link_to "商品一覧", admin_items_path %>
+
+<h1>ジャンル一覧・追加</h1>
+
+<%= form_with model: @genre, url: '/admin/genres', method: :post do |f| %>
+  <div class="form-group">
+       <%= f.label :ジャンル名 %>
+       <%= f.text_field :name %>
+       <%= f.submit '新規登録' %>
+  </div>
+
+  <% @genres.each do |genre| %>
+    <tr>
+      <td><%= genre.name %></td>
+    </tr>
+  <% end %>
+<% end %>

@@ -1,8 +1,25 @@
+<h2><%= link_to "商品一覧", admin_items_path %></h2>
 <h1>商品詳細</h1>
 <tr>
-  <td><%= @item.name %></td>
-  <td><%= @item.introduction %></td>
-  <td><%= @item.genre_id %></td>
-  <td><%= @item.price %></td>
-  <td><%= @item.is_active %></td>
-</tr>
+  <td>
+    <label>商品名</label>
+    <%= @item.name %>
+  </td></br>
+  <td>
+    <label>商品説明</label>
+    <%= @item.introduction %>
+  </td></br>
+  <td>
+    <label>ジャンル</label>
+    <%= @item.genre_id %>
+  </td></br>
+  <td>
+    <label>税込価格</br>(税抜価格)</label>
+    <%= @item.price %>
+  </td></br>
+  <td>
+    <label>販売ステータス</label>
+    <%= @item.is_active %>
+  </td>
+</tr></br>
+<%= link_to "編集する", item_edit_path %>

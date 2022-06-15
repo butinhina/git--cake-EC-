@@ -3,15 +3,27 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
 
-
+  get '/customers/edit' => 'public/customers#edit', as: 'customer_edit'
+  patch 'customers' => 'public/customers#update', as: 'customer_update'
   devise_for :customers, skip: [:passwords],controllers: {
       registrations: "public/registrations",
       sessions: 'public/sessions'
   }
   root to: 'public/homes#top'
+  get '/about' => 'public/homes#about', as: 'about'
   get '/customers/my_page' => 'public/customers#show', as: 'my_page'
+
   get '/customers/unsubscribe' => 'public/customers#unsubscribe', as: 'unsubscribe'
   patch '/customers/withdraw' => 'public/customers#withdraw', as: 'withdraw'
+
+  get '/orders/new' => 'public/orders#new', as: 'order_new'
+  get '/orders' => 'public/orders#index'
+
+
+
+  
+  get '/addresses' => 'public/addresses#index'
+  post '/addresses' => 'public/addresses#create'
 
   get '/admin' => 'admin/homes#top', as: 'admin'
   get '/admin/genres' => 'admin/genres#index'
@@ -31,8 +43,8 @@ Rails.application.routes.draw do
   get '/admin/customers/:id' => 'admin/customers#show', as: 'admin_customer'
   get '/admin/customers/:id/edit' => 'admin/customers#edit', as: 'ad_customer_edit'
   patch '/admin/customers/:id' => 'admin/customers#update', as: 'ad_customer_update'
-  
-  
+
+
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

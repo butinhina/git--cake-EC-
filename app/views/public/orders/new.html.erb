@@ -1,0 +1,20 @@
+<h2>注文情報入力</h2>
+<%= form_with model: @order, url: order_new_path do |f| %>
+
+<div class="field">
+    <%= f.label :支払方法 %></br>
+    <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
+    <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %></br>
+
+    <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
+    <%= f.label :payment_method, Order.payment_methods_i18n[:transfer] %>
+</div>
+
+  <div class="field">
+    <%= f.label :退会ステータス %>
+    <%= f.radio_button :is_active, :true %>
+    <%= f.label :is_active,"有効" %>
+    <%= f.radio_button :is_active, :false %>
+    <%= f.label :is_active,"退会" %>
+  </div>
+<% end %>

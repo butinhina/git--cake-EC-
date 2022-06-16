@@ -1,5 +1,10 @@
 <h2><%= link_to "商品一覧", admin_items_path %></h2>
 <h1>商品詳細</h1>
+    <% if @item.image.attached? %>
+      <%= image_tag @item.image, size: "150x150" %>
+    <% else %>
+      <%= image_tag 'no_image', size: "150x150" %>
+    <% end %>
 <tr>
   <td>
     <label>商品名</label>

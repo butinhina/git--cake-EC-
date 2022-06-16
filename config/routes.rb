@@ -11,6 +11,10 @@ Rails.application.routes.draw do
   }
   root to: 'public/homes#top'
   get '/about' => 'public/homes#about', as: 'about'
+
+  get '/items' => 'public/items#index'
+
+
   get '/customers/my_page' => 'public/customers#show', as: 'my_page'
 
   get '/customers/unsubscribe' => 'public/customers#unsubscribe', as: 'unsubscribe'
@@ -21,9 +25,12 @@ Rails.application.routes.draw do
 
 
 
-  
+
   get '/addresses' => 'public/addresses#index'
   post '/addresses' => 'public/addresses#create'
+  get '/addresses/:id/edit' => 'public/addresses#edit', as: 'address_edit'
+  patch '/addresses/:id' => 'public/addresses#update', as: 'address_update'
+  delete 'addresses/:id' => 'public/addresses#destroy', as: 'address_destroy'
 
   get '/admin' => 'admin/homes#top', as: 'admin'
   get '/admin/genres' => 'admin/genres#index'

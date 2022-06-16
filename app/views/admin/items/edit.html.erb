@@ -2,6 +2,10 @@
 <h1>商品編集</h1>
 
 <%= form_with model: @item, url: item_update_path(@item.id), method: :patch do |f| %>
+  <div>
+    <%= f.label :商品画像 %>
+    <%= f.file_field :image, accept: "image/*" %>
+  </div>
   <div class="field">
     <%= f.label :商品名 %>
     <%= f.text_field :name %>
@@ -18,7 +22,7 @@
   </div>
 
   <div class="field">
-    <%= f.label :税込価格 %>
+    <%= f.label :税抜価格 %>
     <%= f.text_field :price %>
     <%= f.label :円 %>
   </div>

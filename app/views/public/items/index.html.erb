@@ -1,1 +1,12 @@
 <h1>商品一覧</h1>
+<% @items.each do |item| %>
+
+  <tr>
+    <td><%= link_to  public_item_path(item.id) do %>
+          <%= image_tag item.image, size: "150x150" %>
+        <% end %>
+    </td></br>
+    <td><%= item.name %></td></br>
+    <td><label>¥</label><%= item.price %></td>
+  </tr></br>
+<% end %>

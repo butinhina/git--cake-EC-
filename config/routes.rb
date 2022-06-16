@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get '/about' => 'public/homes#about', as: 'about'
 
   get '/items' => 'public/items#index'
+  get '/items/:id' => 'public/items#show', as: 'public_item'
 
 
   get '/customers/my_page' => 'public/customers#show', as: 'my_page'

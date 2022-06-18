@@ -16,6 +16,9 @@ Rails.application.routes.draw do
   get '/items/:id' => 'public/items#show', as: 'public_item'
 
 
+  post '/cart_items' => 'public/cart_items#create'
+
+
   get '/customers/my_page' => 'public/customers#show', as: 'my_page'
 
   get '/customers/unsubscribe' => 'public/customers#unsubscribe', as: 'unsubscribe'

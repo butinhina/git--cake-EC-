@@ -15,8 +15,12 @@ Rails.application.routes.draw do
   get '/items' => 'public/items#index'
   get '/items/:id' => 'public/items#show', as: 'public_item'
 
-
+  get '/cart_items' => 'public/cart_items#index', as: 'public_cart_items'
   post '/cart_items' => 'public/cart_items#create'
+  patch '/cart_items/:id' => 'public/cart_items#update', as: 'cart_item_update'
+  delete '/cart_items/destroy_all' => 'public/cart_items#destroy_all'
+  delete '/cart_items/:id' => 'public/cart_items#destroy', as: 'cart_item_destroy'
+
 
 
   get '/customers/my_page' => 'public/customers#show', as: 'my_page'
@@ -26,9 +30,6 @@ Rails.application.routes.draw do
 
   get '/orders/new' => 'public/orders#new', as: 'order_new'
   get '/orders' => 'public/orders#index'
-
-
-
 
   get '/addresses' => 'public/addresses#index'
   post '/addresses' => 'public/addresses#create'
@@ -54,7 +55,6 @@ Rails.application.routes.draw do
   get '/admin/customers/:id' => 'admin/customers#show', as: 'admin_customer'
   get '/admin/customers/:id/edit' => 'admin/customers#edit', as: 'ad_customer_edit'
   patch '/admin/customers/:id' => 'admin/customers#update', as: 'ad_customer_update'
-
 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

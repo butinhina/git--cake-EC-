@@ -29,7 +29,10 @@ Rails.application.routes.draw do
   patch '/customers/withdraw' => 'public/customers#withdraw', as: 'withdraw'
 
   get '/orders/new' => 'public/orders#new', as: 'order_new'
+  post '/orders/confirm' => 'public/orders#confirm'
+  get '/orders/complete' => 'public/orders#complete'
   get '/orders' => 'public/orders#index'
+
 
   get '/addresses' => 'public/addresses#index'
   post '/addresses' => 'public/addresses#create'

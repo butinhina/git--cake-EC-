@@ -1,0 +1,16 @@
+<h2>注文情報確認</h2>
+<table class="table table-hover table-inverse">
+    <thead>
+        <tr>
+          <th>商品名</th>
+          <th>単価（税込）</th>
+          <th>数量</th>
+          <th>小計</th>
+        </tr>
+    </thead>
+    <tbody>
+
+            <label>支払い方法<%= @order.payment_method %></label>
+            <label>お届け先</label>
+            <%= @order.postal_code %><%= @order.address %><%= @order.name %>
+      <%= link_to "注文を確定する", orders_complete_path %>

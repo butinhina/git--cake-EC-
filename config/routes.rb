@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   post '/orders/confirm' => 'public/orders#confirm'
   get '/orders/complete' => 'public/orders#complete'
   get '/orders' => 'public/orders#index'
+  post '/orders' => 'public/orders#create'
 
 
   get '/addresses' => 'public/addresses#index'

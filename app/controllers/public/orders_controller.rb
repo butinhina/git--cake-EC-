@@ -12,15 +12,24 @@ class Public::OrdersController < ApplicationController
       @order.address = current_customer.address
       @order.name = current_customer.first_name + current_customer.last_name
     # binding.pry
-    elsif Address.find(params[:order][:address_id]) == "1"
+    elsif params[:order][:select_address] == "1"
+        @address = Address.find(params[:order][:address_id])
         @order.postal_code = @address.postal_code
         @order.address = @address.address
         @order.name = @address.name
+        # binding.pry
     elsif params[:order][:select_address] == "2"
         @order.postal_code = params[:order][:postal_code]
         @order.address = params[:order][:address]
         @order.name = params[:order][:name]
     end
+    @cart_items = current_customer.cart_items
+    @total = 0
+  end
+  def create
+    @order = Order.new(order_params)
+    @order.save
+    # binding.pry
   end
 
   def complete

@@ -28,12 +28,13 @@ Rails.application.routes.draw do
   get '/customers/unsubscribe' => 'public/customers#unsubscribe', as: 'unsubscribe'
   patch '/customers/withdraw' => 'public/customers#withdraw', as: 'withdraw'
 
+
   get '/orders/new' => 'public/orders#new', as: 'order_new'
   post '/orders/confirm' => 'public/orders#confirm'
   get '/orders/complete' => 'public/orders#complete'
-  get '/orders' => 'public/orders#index'
   post '/orders' => 'public/orders#create'
-
+  # get '/orders/:id' => 'public/orders#show', as: 'public_order'
+  get '/orders' => 'public/orders#index'
 
   get '/addresses' => 'public/addresses#index'
   post '/addresses' => 'public/addresses#create'

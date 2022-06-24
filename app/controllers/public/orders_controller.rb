@@ -30,6 +30,18 @@ class Public::OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.save
     # binding.pry
+    current_customer.cart_items.each do |cart_item|  #カートの商品を1つずつ取り出しループ
+      @order_detail = OrderDetail.new  #初期化宣言
+      @order_detail.item_id = cart_item.item_id #商品idを注文商品idに代入
+      @order_detail.amount = cart_item.amount #商品の個数を注文商品の個数に代入
+      @order_detail.price = (cart_item.item.price * 1.1).floor #商品の税込み価格を注文商品の価格に代入
+      @order_detail.order_id = @order.id #注文商品に注文idを紐付け
+      @order_detail.save #注文商品を保存
+      
+    end #ループ終わり
+    # binding.pry
+      current_customer.cart_items.destroy.all #カートの中身を削除
+      redirect_to orders_complete_path #注文完了画面に遷移
   end
 
   def complete
@@ -38,9 +50,12 @@ class Public::OrdersController < ApplicationController
   def index
   end
 
+  def show
+  end
+
   private
   def order_params
-    params.require(:order).permit(:payment_method, :postal_code, :address, :name)
+    params.require(:order).permit(:payment_method, :postal_code, :address, :name, :shipping_cost, :total_payment, :customer_id)
   end
 
 end

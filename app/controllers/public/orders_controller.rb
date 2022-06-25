@@ -37,10 +37,10 @@ class Public::OrdersController < ApplicationController
       @order_detail.price = (cart_item.item.price * 1.1).floor #商品の税込み価格を注文商品の価格に代入
       @order_detail.order_id = @order.id #注文商品に注文idを紐付け
       @order_detail.save #注文商品を保存
-      
+      # binding.pry
     end #ループ終わり
     # binding.pry
-      current_customer.cart_items.destroy.all #カートの中身を削除
+      current_customer.cart_items.destroy_all #カートの中身を削除
       redirect_to orders_complete_path #注文完了画面に遷移
   end
 
@@ -48,9 +48,15 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
+    @orders = Order.all
+
   end
 
   def show
+    @order = Order.find(params[:id])
+    @order_detail = @order.order_details
+    @total = 0
+    # @cart_items = current_customer.cart_items
   end
 
   private

@@ -33,8 +33,9 @@ Rails.application.routes.draw do
   post '/orders/confirm' => 'public/orders#confirm'
   get '/orders/complete' => 'public/orders#complete'
   post '/orders' => 'public/orders#create'
-  # get '/orders/:id' => 'public/orders#show', as: 'public_order'
   get '/orders' => 'public/orders#index'
+  get '/orders/:id' => 'public/orders#show', as: 'public_order'
+
 
   get '/addresses' => 'public/addresses#index'
   post '/addresses' => 'public/addresses#create'

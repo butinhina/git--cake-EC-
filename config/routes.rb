@@ -62,6 +62,8 @@ Rails.application.routes.draw do
   get '/admin/customers/:id/edit' => 'admin/customers#edit', as: 'ad_customer_edit'
   patch '/admin/customers/:id' => 'admin/customers#update', as: 'ad_customer_update'
 
+  get '/admin/orders/:id' => 'admin/orders#show', as: 'admin_order'
+
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

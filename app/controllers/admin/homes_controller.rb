@@ -1,13 +1,14 @@
 class Admin::HomesController < ApplicationController
+  before_action :authenticate_admin!
   def top
     @orders=Order.all
   end
 
- 
+
 
 
   private
-  def genre_params
-    params.require(:orde).permit(:first_name, :last_name, :amount, :create_at, :status)
-  end
+  # def order_params
+  #   params.require(:order).permit(:first_name, :last_name, :amount, :create_at, :status)
+  # end
 end

@@ -1,4 +1,5 @@
 class Public::CartItemsController < ApplicationController
+  before_action :authenticate_customer!
   def index
     @cart_items = current_customer.cart_items
     @total = 0
@@ -10,10 +11,10 @@ class Public::CartItemsController < ApplicationController
 
   def create
     @new_cart_item = CartItem.new(cart_item_params)
-    if CartItem.find_by(item_id: params[:cart_item][:item_id]) #カートに入れた商品はすでにカートに追加済か？
+    if current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id]) #カートに入れた商品はすでにカートに追加済か？
       @cart_item = CartItem.find_by(item_id: params[:cart_item][:item_id]) #カート内のすでにある商品の情報取得
       @cart_item.amount = @cart_item.amount + @new_cart_item.amount #既にある情報に個数を合算
-      @cart_item.update(amount:@cart_item.amount) #情報の更新　個数カラムのみ
+      @cart_item.update(amount:@cart_item.amount) #情報の更新 個数カラムのみ
       redirect_to public_cart_items_path
     else
       @new_cart_item.customer_id = current_customer.id #誰のカートか紐付け
@@ -32,7 +33,7 @@ class Public::CartItemsController < ApplicationController
     @cart_item.update(cart_item_params)
     redirect_to public_cart_items_path
   end
- 
+
   def destroy
     @cart_item = CartItem.find(params[:id])
     @cart_item.destroy

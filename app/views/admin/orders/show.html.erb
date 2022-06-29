@@ -3,7 +3,7 @@
 <label>注文日</label><%= @order.created_at.strftime("%Y/%m/%d") %></br>
 <label>配送先</label><%= @order.postal_code %><%= @order.address %><%= @order.name %></br>
 <label>支払方法</label><%= Order.payment_methods_i18n[@order.payment_method] %></br>
-<label>注文ステータス</label>
+<label>注文ステータス</label></br>
 
 <table>
   <thead>
@@ -29,8 +29,8 @@
     <% end %>
   </tbody>
 
-  <label>商品合計</label><%= @total %>
-  <label>送料</label><%= 800 %>
+  <label>商品合計</label><%= @total %></br>
+  <label>送料</label><%= 800 %></br>
   <label>請求金額合計</label><%= @total+800 %>
 
 </table>

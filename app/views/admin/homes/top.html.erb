@@ -13,8 +13,8 @@
         <tr>
           <td><%= link_to order.created_at.strftime("%Y/%m/%d %H:%M:%S"), admin_order_path(order.id) %></td>
           <td><%= order.customer.first_name %><%= order.customer.last_name %></td>
-          <td><% order.order_details.each do |order_detail|  %>
-              <% @total = 0 %>
+          <% @total = 0 %>
+          <td><% order.order_details.each do |order_detail| %>
                 <% @total += order_detail.amount %>
               <% end %>
               <%= @total %>
@@ -24,3 +24,4 @@
       <% end %>
     </tbody>
  </table>
+ <%= paginate @orders %>

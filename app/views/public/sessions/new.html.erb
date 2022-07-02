@@ -1,25 +1,40 @@
-<%= link_to "ログアウト",destroy_customer_session_path, method: :delete %>
-<h2>ログイン</h2>
-<span>会員の方はこちらからログイン</span>
+<div class="container">
+ <h2>ログイン</h2>
+ <div class="row justify-content-center">
+  <div class="col-11">
+    <strong>会員の方はこちらからログイン</strong>
+  </div>
+ </div>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :メールアドレス %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <div class="row justify-content-center">
+    <label class="col-3">メールアドレス</label>
+    <div class="col-5">
+     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :パスワード %>
-    <%= f.password_field :password, autocomplete: "current-password" %>
+  <div class="row  justify-content-center">
+    <label class="col-3">パスワード</label>
+    <div class="col-5">
+     <%= f.password_field :password, autocomplete: "current-password" %>
+    </div>
   </div>
-
-
-
-  <div class="actions">
+　<div class="row justify-content-center">
+    <div class="col-auto">
+      <div class="actions">
     <%= f.submit "ログイン" %>
+      </div>
+    </div>
   </div>
 
 <% end %>
-
-<span>会員登録がお済みでない方</span>
-<p><%= link_to "こちら", new_customer_registration_path %>　から新規登録を行なってください。</p>
+<div class="row justify-content-center">
+  <div class="col-11">
+   <strong>会員登録がお済みでない方</strong>
+  </div>
+</div>
+<div class="row justify-content-center">
+  <div class="col-8"
+    <p><%= link_to "こちら", new_customer_registration_path %>　から新規登録を行なってください。</p>
+  </div>
+</div>

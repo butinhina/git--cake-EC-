@@ -1,28 +1,32 @@
-<%= link_to "商品一覧", items_path %>
-<h1>配送先登録/一覧</h1>
+<div class="container">
+  <div class="row text-center">
+    <div class="col-5">
+      <h4 class="bg-light">配送先登録/一覧</h4>
+    </div>
+  </div>
 
 <%= form_with model: @address, url: '/addresses', method: :post do |f| %>
-        <div class="form-group">
-         <%= f.label :郵便番号（ハイフンなし） %>
-         <%= f.text_field :postal_code %>
+        <div class="row">
+         <div class="col-4"><%= f.label :郵便番号（ハイフンなし） %></div>
+         <div class="g-col-3"><%= f.text_field :postal_code %></div>
         </div>
 
-        <div class="form-group">
-         <%= f.label :住所 %>
-         <%= f.text_field :address %>
+        <div class="row">
+         <div class="col-4"><%= f.label :住所 %></div>
+         <div class="g-col-3"><%= f.text_field :address %></div>
         </div>
 
-        <div class="form-group">
-         <%= f.label :宛名 %>
-         <%= f.text_field :name%>
-         <%= f.submit '新規登録' %>
+        <div class="row">
+         <div class="col-4"><%= f.label :宛名 %></div>
+         <div class="g-col-3"><%= f.text_field :name%></div>
+         <div class="g-col-5"><%= f.submit '新規登録', class: "btn btn-success" %></div>
         </div>
 <% end %>
 
 
-  <table class="table table-hover table-inverse">
+  <table class="table table-hover table-bordered">
 　　　<thead>
-        <tr>
+        <tr class="table-active">
           <th>郵便番号</th>
           <th>住所</th>
           <th>宛名</th>
@@ -35,12 +39,14 @@
       <td><%= address.postal_code %></td>
       <td><%= address.address %></td>
       <td><%= address.name %></td>
-      <td><%= link_to "編集する", address_edit_path(address.id) %></td>
-      <td><%= link_to "削除する", address_destroy_path(address.id), method: :delete, data: {confirm: "本当に消しますか？"}, class:"btn btn-danger" %></td>
+      <td><%= link_to "編集する", address_edit_path(address.id), class: "btn btn-success" %>
+      <%= link_to "削除する", address_destroy_path(address.id), method: :delete, data: {confirm: "本当に消しますか？"}, class:"btn btn-danger" %>
+      </td>
     </tr>
   <% end %>
   </tbody>
   </table>
+</div>
 
 
 

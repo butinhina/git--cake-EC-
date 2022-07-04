@@ -1,7 +1,14 @@
-<h1>注文履歴一覧</h1>
-<table class="table table-hover table-inverse">
+<div class="container">
+  <div class="row text-center">
+    <div class="col-5">
+      <h4 class="bg-light">注文履歴一覧</h4>
+    </div>
+  </div>
+
+
+<table class="table table-hover table-bordered">
  <thead>
-  <tr>
+  <tr class="table-active">
     <th>注文日</th>
     <th>配送先</th>
     <th>注文商品</th>
@@ -21,7 +28,9 @@
     </td>
 　　<td><%= order.total_payment %></td>
     <td></td>
-    <td><%= link_to "表示する", public_order_path(order.id) %></td>
+    <td><%= link_to "表示する", public_order_path(order.id), class: "btn btn-warning" %></td>
 　</tr>
 <% end %>
 </tbody>
+</div>
+

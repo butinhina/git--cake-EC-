@@ -1,57 +1,66 @@
-<h2>注文履歴詳細</h2>
-
-<table class="table table-hover table-inverse">
-  <label>注文情報</label>
+<div class="container">
+  <div class="row text-center">
+    <div class="col-5">
+      <h4 class="bg-light">注文履歴詳細</h4>
+    </div>
+  </div>
+  <table class="table table-bordered">
+  <strong>注文情報</strong>
    <tr>
-     <th>注文日</th>
+     <th class="table-active">注文日</th>
      <td><%= @order.created_at.strftime("%Y/%m/%d") %></td>
    </tr>
    <tr>
-     <th>配送先</th>
+     <th class="table-active">配送先</th>
      <td><%= @order.postal_code %><%= @order.address %><%= @order.name %></td>
    </tr>
    <tr>
-     <th>支払方法</th>
+     <th class="table-active">支払方法</th>
      <td><%= Order.payment_methods_i18n[@order.payment_method] %></td>
    </tr>
    <tr>
-     <th>ステータス</th>
+     <th class="table-active">ステータス</th>
      <td></td>
    </tr>
-</table>
-<table class="table table-hover table-inverse">
-  <label>注文内容</label>
-   <tr>
+  </table>
+  
+  <table class="table table-hover table-bordered">
+  <strong>注文内容</strong>
+   <tr class="table-active">
      <th>商品</th>
      <th>単価（税込）</th>
      <th>個数</th>
      <th>小計</th>
-  </tr>
-
- <% @order_detail.each do |order_detail| %>
+   </tr>
+   <% @order_detail.each do |order_detail| %>
    <tr>
      <td><%= order_detail.item.name %></td>
      <td><%= order_detail.item.with_tax_price %></td>
      <td><%= order_detail.amount %></td>
      <td><%= order_detail.item.with_tax_price*order_detail.amount %></td>
-
          <% @total += order_detail.item.with_tax_price*order_detail.amount %>
    </tr>
- <% end %>
+   <% end %>
+  </table>
+  
 
-</table>
-<table class="table table-hover table-inverse">
-  <label>請求情報</label>
+  
+  <table class="table table-bordered">
+  <strong>請求情報</strong>
    <tr>
-     <th>商品合計</th>
+     <th class="table-active">商品合計</th>
      <td><%= @total %></td>
    </tr>
    <tr>
-     <th>配送料</th>
+     <th class="table-active">配送料</th>
      <td><%= 800 %></td>
    </tr>
    <tr>
-     <th>ご請求額</th>
+     <th class="table-active">ご請求額</th>
      <td><%= @order.total_payment %></td>
    </tr>
-</table>
+  </table>
+</div>
+
+
+

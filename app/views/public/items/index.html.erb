@@ -8,7 +8,11 @@
   <div class="col-3" style="padding-right: 0px; padding-left: 0px;">
   <tr>
     <td><%= link_to  public_item_path(item.id) do %>
-          <%= image_tag item.image, size: "150x150" %>
+          <% if item.image.attached? %>
+            <%= image_tag item.image, size: "200x150" %>
+          <% else %>
+            <%= image_tag 'no_image', size: "200x150" %>
+          <% end %>
         <% end %>
     </td></br>
     <td><%= item.name %></td></br>

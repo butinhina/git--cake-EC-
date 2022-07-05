@@ -13,7 +13,7 @@
   </div>
  </div>
  </div>
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<%= form_with model: @customer, url: customer_session_path do |f| %>
   <div class="row justify-content-center">
     <label class="col-3">メールアドレス</label>
     <div class="col-5">
